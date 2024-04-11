@@ -1,0 +1,4 @@
+1kg sugar = 45
+1kg moong dal = 90
+1kg onion = 30
+1ltr oil = 190

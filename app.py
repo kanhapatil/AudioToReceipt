@@ -37,8 +37,20 @@ def save_audio(audio, path):
 def main():
     st.title("Audio to receipt generator")
 
+    # Reading message from the prices.txt file
+    try:
+        with open("prices.txt", "r") as file:
+            previous_message = file.read()
+    except FileNotFoundError:
+        previous_message = ""
+
     seconds = st.number_input("Enter duration in seconds", min_value=1, value=3, step=1)
-    message = st.text_area("Enter the prices of your items.")
+    message = st.text_area("Enter the prices of your items.", value=previous_message)
+
+    # Creating prices.txt file and writting message on it
+    with open("prices.txt", "w") as file:
+        file.write(message)
+
     st.write(f'You wrote {len(message)} characters.')
     start_button = st.button("Start Recording")
 
